@@ -1,16 +1,10 @@
 import React from "react";
 
 interface Iheader {
-  label?: string;
-  children?: JSX.Element | string;
+  label: string;
 }
-const Header = ({ label = "Counter", children }: Iheader) => {
-  return (
-    <>
-      <h1>{label}</h1>
-      {children}
-    </>
-  );
+const Header = ({ label = "Todo App" }: Iheader) => {
+  return <h1>{label}</h1>;
 };
 
 export default Header;
