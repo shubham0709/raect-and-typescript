@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Header from "./Header";
+import Button from "./Button";
 
 const Counter = () => {
   const [count, setCount] = useState(0);
@@ -12,8 +13,8 @@ const Counter = () => {
     <div>
       <Header />
       <Header label={`${count}`} />
-      <button onClick={() => updateCount(-1)}>Reduce</button>
-      <button onClick={() => updateCount(1)}>Add</button>
+      <Button val={-1} label="Reduce" updateCount={updateCount} />
+      <Button val={1} label="Add" updateCount={updateCount} />
     </div>
   );
 };
