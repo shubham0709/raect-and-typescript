@@ -5,12 +5,14 @@ interface TodoItemProps {
   todos: Skeleton[];
   deleteTodo: (id: string) => void;
   toggleStatus: (payload: Skeleton) => void;
+  updateTodo: (payload: Skeleton) => void;
 }
 
 export const TodoItem = ({
   todos,
   deleteTodo,
   toggleStatus,
+  updateTodo,
 }: TodoItemProps) => {
   console.log(todos);
   return (
@@ -25,6 +27,7 @@ export const TodoItem = ({
             <button onClick={() => toggleStatus(elem)}>
               {elem.isCompleted ? "mark pending" : "mark as done"}
             </button>
+            <button>Update Todo</button>
           </div>
         ))}
     </div>

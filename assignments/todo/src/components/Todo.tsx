@@ -7,6 +7,7 @@ import axios from "axios";
 
 const Todo = () => {
   const [todos, setTodos] = useState<Skeleton[]>([]);
+  const [data, setData] = useState("");
   const addTodo = (payload: Skeleton) => {
     axios
       .post("http://localhost:8080/todos", payload)
@@ -38,6 +39,14 @@ const Todo = () => {
       .catch((e) => console.log(e));
   };
 
+  const updateTodo = (payload: Skeleton) => {
+    let id = payload.id;
+    axios
+      .patch(`http://localhost:8080/todos/${id}`, payload)
+      .then((res) => getTodos())
+      .catch((e) => console.log(e));
+  };
+
   useEffect(() => {
     getTodos();
   }, []);
@@ -45,11 +54,12 @@ const Todo = () => {
   return (
     <div>
       <Header label={"Todo Application"} />
-      <TodoInput addTodo={addTodo}></TodoInput>
+      <TodoInput addTodo={addTodo} />
       <TodoItem
         todos={todos}
         deleteTodo={deleteTodo}
         toggleStatus={toggleStatus}
+        updateTodo={updateTodo}
       />
     </div>
   );
