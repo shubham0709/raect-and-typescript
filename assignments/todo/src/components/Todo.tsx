@@ -7,7 +7,6 @@ import axios from "axios";
 
 const Todo = () => {
   const [todos, setTodos] = useState<Skeleton[]>([]);
-  const [data, setData] = useState("");
   const addTodo = (payload: Skeleton) => {
     axios
       .post("http://localhost:8080/todos", payload)

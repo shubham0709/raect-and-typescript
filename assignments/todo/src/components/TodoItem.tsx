@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Skeleton from "./Skeleton";
 
 interface TodoItemProps {
@@ -19,15 +20,13 @@ export const TodoItem = ({
     <div>
       {todos.length > 0 &&
         todos.map((elem) => (
-          <div key={elem.id || Math.floor(Math.random())}>
+          <div key={elem.id}>
             <span>{elem.title}</span>
-            <span>{"---"}</span>
-            <span>{elem.isCompleted ? "true" : "false"}</span>
             <button onClick={() => deleteTodo(elem.id)}>delete</button>
             <button onClick={() => toggleStatus(elem)}>
               {elem.isCompleted ? "mark pending" : "mark as done"}
             </button>
-            <button>Update Todo</button>
+            <Link to={`/update/${elem.id}`}>Update Todo</Link>
           </div>
         ))}
     </div>
